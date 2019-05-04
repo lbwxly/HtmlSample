@@ -1,0 +1,45 @@
+<html>
+  <body onmouseup="onSpliderUp(this)">
+    <div id="left" data-width="100" style="position: absolute; top: 0px; left: 0px; width: 100px;bottom: 0px; background-color: gainsboro">
+      <div id="splider"
+           data-mouseDown="no"
+           style="position:absolute; top:0px;right:0px;bottom:0px;width: 5px; background-color: red; cursor: col-resize"
+           onmousedown="onSpliderDown(this)">
+
+      </div>
+    </div>
+    <div id="right" style="position: absolute; top: 0px; left: 100px; right: 0px;bottom: 0px; background-color:forestgreen">
+      
+    </div>
+  </body>
+  <script type="text/javascript">
+    var body = document.body;
+    body.addEventListener("mousemove",onSpliderMove);
+
+    var splider = document.getElementById("splider");
+
+    function onSpliderDown(target){
+        target.dataset.mouseDown = "yes";
+
+        console.log("mouse down");
+    }
+    function onSpliderMove(e){
+        if("yes" === splider.dataset.mouseDown){
+            var left = document.getElementById("left");
+            var right = document.getElementById("right");
+            var curWidth = parseInt(left.dataset.width);
+            left.dataset.width = curWidth + e.movementX;
+            left.style.width = left.dataset.width + "px";
+            right.style.left = left.style.width;
+            console.log("x"+e.movementX);
+
+            console.log("mouse move");
+        }
+    }
+
+    function onSpliderUp(target){
+        splider.dataset.mouseDown = "no";
+        console.log("mouse up");
+    }
+  </script>
+</html>

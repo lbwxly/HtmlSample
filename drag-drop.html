@@ -1,0 +1,29 @@
+<html>
+  <body>
+    <div id="container" 
+         data-width="100" 
+         style="position: absolute; top: 0px; left: 0px; right: 0px;bottom: 0px; background-color: gainsboro"
+         ondragover="onDragOver(event)"
+         ondrop="onDrop(event)">
+      <div id="dropContainer"></div>
+    </div>
+  </body>
+  <script type="text/javascript">
+    var container = document.getElementById("container");
+    var dropContainer = document.getElementById("dropContainer");
+    function onDragOver(event){
+      event.preventDefault();
+      container.style.border = "solid 1px red";
+      console.log("drag over");
+    }
+
+    function onDrop(event){
+      event.preventDefault();
+      container.style.border = "";
+      if(event.dataTransfer && event.dataTransfer.files.length > 0){
+        dropContainer.innerText="Drop File Name:"+ event.dataTransfer.files[0].name
+      }
+      console.log("drop");
+    }
+  </script>
+</html>

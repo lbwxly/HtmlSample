@@ -1,0 +1,38 @@
+<html>
+  <body>
+    <div style="position: absolute; top: 100px; left: 100px;">
+      <div id="popover" style="width: 200px;height:200px; overflow-x: auto; ">
+        <span style="width: 1000px">This is a header;This is a header;This is a header;This is a header;This is a header;This is a header;This is a header;This is a header;This is a header;This is a header;This is a header;This is a header;This is a header;This is a header;This is a header;This is a header;</span>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript">
+    var container = document.getElementById("popover");
+    container.scrollTop = 100;
+    function moveEnter(){
+      var ele = document.getElementById("popover");
+      ele.style.display = 'block';
+    }
+    
+    function moveOut(){
+      var ele = document.getElementById("popover");
+      ele.style.display = 'none';
+    }
+
+    function Person(name){
+      this.name = name;
+      function run(){
+        console.log("run");
+      }
+      this.runWrapper = function(){
+        run();
+      }
+      //run();
+    }
+
+    var person = new Person("Jensen");
+    person.runWrapper();
+    //person.run();
+    //Person.run();
+  </script>
+</html>
